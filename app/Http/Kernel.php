@@ -46,7 +46,6 @@ class Kernel extends HttpKernel {
 
     // System Accesses
     'administrator'           => \App\Http\Middleware\Access\Administrator::class,
-    'jasamarga'               => \App\Http\Middleware\Access\Jasamarga::class,
 
     // System Main
     'accesses'         => \App\Http\Middleware\Accesses::class,
