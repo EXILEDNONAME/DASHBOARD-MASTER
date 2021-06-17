@@ -13,14 +13,6 @@ function activities($model) {
   return $items;
 }
 
-function haveAccess($name) {
-  $id = Auth::User()->id_access;
-  if ( Access::where('name', $name)->where('id', $id)->first()) {
-    $items = Access::where('name', 'like', '%' . $name . '%')->where('id', $id)->first();
-    return $items;
-  }
-}
-
 function chart_created($model) {
   $items = $model::select(\DB::raw("COUNT(*) as count"))->where('created_at', 'like', \Carbon\Carbon::now()->format('Y') . '-01%')->count(); $items .= ', ';
   $items .= $model::select(\DB::raw("COUNT(*) as count"))->where('created_at', 'like', \Carbon\Carbon::now()->format('Y') . '-02%')->count(); $items .= ', ';
