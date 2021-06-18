@@ -13,7 +13,7 @@ Route::group([
   Route::get('status/{id}/{slug}', 'FilterController@status')->name('status');
   Route::get('delete/{id}', 'FilterController@delete')->name('delete');
   Route::get('deleteall', 'FilterController@deleteall')->name('deleteall');
-  Route::resource('/', 'FilterController')->middleware(['auth', 'dummy'])->parameters(['' => 'id']);
+  Route::resource('/', 'FilterController')->middleware(['auth', 'administrator'])->parameters(['' => 'id']);
 });
 
 // DUMMY - TABLE GENERALS
@@ -29,7 +29,7 @@ Route::group([
   Route::get('status/{id}/{slug}', 'GeneralController@status')->name('status');
   Route::get('delete/{id}', 'GeneralController@delete')->name('delete');
   Route::get('deleteall', 'GeneralController@deleteall')->name('deleteall');
-  Route::resource('/', 'GeneralController')->parameters(['' => 'id']);
+  Route::resource('/', 'GeneralController')->middleware(['auth', 'operator'])->parameters(['' => 'id']);
 });
 
 // DUMMY - TABLE SINGLE RELATIONS
