@@ -13,7 +13,7 @@ Route::group([
   Route::get('status/{id}/{slug}', 'FilterController@status')->name('status');
   Route::get('delete/{id}', 'FilterController@delete')->name('delete');
   Route::get('deleteall', 'FilterController@deleteall')->name('deleteall');
-  Route::resource('/', 'FilterController')->parameters(['' => 'id']);
+  Route::resource('/', 'FilterController')->middleware(['auth', 'dummy'])->parameters(['' => 'id']);
 });
 
 // DUMMY - TABLE GENERALS
