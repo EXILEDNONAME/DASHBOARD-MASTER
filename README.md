@@ -1,8 +1,10 @@
 ## Dashboard Revision
 
 <hr>
-Create Routes Middleware Page :
+Create Routes Middleware Page : <br>
 - Administrator
+- Operator
+- User
 
 <hr>
-- Create Menus Layer Drag & Drop with Permissions
+Create Menus Layer Drag & Drop with Permissions
