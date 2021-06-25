@@ -1,10 +1,23 @@
 <?php
 
+use Auth;
 use App\Access;
 use Spatie\Activitylog\Models\Activity;
 
 function Accesses() {
   $items = Access::orderBy('name','asc')->where('active', 1)->pluck('name', 'id')->toArray();
+  return $items;
+}
+
+function Middleware($middleware) {
+  if ($middleware == 'Administrator') { $data = 1 }
+  if ($middleware == 'Operator') { $data = 2 }
+  if ($middleware == 'User') { $data = 3 }
+
+  if (Auth::User()->id_access == $data )
+  $items = Auth::User()->id_access
+  }
+
   return $items;
 }
 
