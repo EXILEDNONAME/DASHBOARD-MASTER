@@ -1,6 +1,5 @@
 <?php
 
-use Auth;
 use App\Access;
 use Spatie\Activitylog\Models\Activity;
 
@@ -10,15 +9,13 @@ function Accesses() {
 }
 
 function Middleware($middleware) {
-  if ($middleware == 'Administrator') { $data = 1 }
-  if ($middleware == 'Operator') { $data = 2 }
-  if ($middleware == 'User') { $data = 3 }
+  $data = Access::where('name', $middleware)->first();
 
-  if (Auth::User()->id_access == $data )
-  $items = Auth::User()->id_access
+  if ( Auth::User()->id_access == $data->id ) {
+    $items = Auth::User()->id_access;
+    return $items;
   }
 
-  return $items;
 }
 
 function activities($model) {

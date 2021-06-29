@@ -9,6 +9,7 @@
         </a>
       </li>
 
+      @if ( Middleware('Administrator'))
       <li class="menu-item">
         <a href="javascript:;" onclick="return alert('Maintenance!')" class="menu-link">
           <i class="menu-icon fas fa-envelope"></i>
@@ -22,15 +23,15 @@
           <span class="menu-text"> Notifications </span>
         </a>
       </li>
+      @endif
 
       @include('includes.sidebar-item')
 
-      @if ( Accesses('Administrator'))
+      @if ( Middleware('Administrator'))
       <li class="menu-section">
         <h4 class="menu-text"> Extensions </h4>
         <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
       </li>
-      @endif
 
       <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/dummy*')) ? 'menu-item-active menu-item-open' : '' }}">
         <a href="javascript:;" class="menu-link menu-toggle">
@@ -81,6 +82,7 @@
         </div>
       </li>
 
+
       <li class="menu-item {{ (request()->is('dashboard/file-manager*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
         <a href="/dashboard/file-manager" class="menu-link">
           <i class="menu-icon fas fa-hdd"></i>
@@ -94,6 +96,7 @@
           <span class="menu-text"> Generator </span>
         </a>
       </li>
+      @endif
 
       <!-- SETTINGS -->
       <li class="menu-section">
@@ -101,6 +104,7 @@
         <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
       </li>
 
+      @if ( Middleware('Administrator'))
       <li class="menu-item menu-item-submenu {{ (request()->is('dashboard/management*')) ? 'menu-item-active menu-item-open' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
         <a href="javascript:;" class="menu-link menu-toggle">
           <span class="menu-icon"><i class="menu-icon fas fa-shield-alt"></i></span>
@@ -125,6 +129,7 @@
           </ul>
         </div>
       </li>
+      @endif
 
       <li class="menu-item {{ (request()->is('dashboard/profile*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
         <a href="/dashboard/profile" class="menu-link">
@@ -133,12 +138,14 @@
         </a>
       </li>
 
+      @if ( Middleware('Administrator'))
       <li class="menu-item {{ (request()->is('dashboard/statistics*')) ? 'menu-item-active' : '' }}" aria-haspopup="true">
         <a href="/dashboard/statistics" class="menu-link">
           <i class="menu-icon fas fa-bug"></i>
           <span class="menu-text"> Statistics </span>
         </a>
       </li>
+      @endif
 
       <li class="menu-item">
         <a href="/dashboard/logout" class="menu-link" onclick="return confirm('Are you sure?')">
